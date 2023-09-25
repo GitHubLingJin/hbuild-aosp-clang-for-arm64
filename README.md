@@ -7,13 +7,13 @@
 
 
 使用方法
-1.克隆此项目
+1.克隆此项目，注意此脚本只适合较新的clang版本比如clang16
 git clone https://github.com/tomxi1997/build-aosp-clang-for-arm64.git tc-build
 mkdir -p ./tc-build/src/llvm-project
 cd ./tc-build/src/llvm-project
 
 2.下载经补丁后的aosp clang源码可从这里找https://android.googlesource.com/toolchain/llvm-project/+log/c4c5e79dd4b4c78eee7cffd9b0d7394b5bedcf12/clang-tools-extra
-就以补丁181处为例。
+就以补丁181处为例,尽量选择修改处多的
 
 wget https://android.googlesource.com/toolchain/llvm-project/+archive/984b800a036fc61ccb129a8da7592af9cadc94dd.tar.gz
 
@@ -23,8 +23,10 @@ cd ..
 
 ./build.sh
 
-3.最终会安装在 /root/Toolchain/Pdx-clang16,打包测试
-cd  /root/Toolchain
+3.最终在三星s10 骁龙855的lxc ubuntu 22.04 总耗时间1小时44分编译完成最终会安装在 /root/Toolchain/Pdx-clang16,打包测试。
+
+cd /root/Toolchain
+
 XZ_OPT="-9" tar --warning=no-file-changed -cJf pdx-clang16.tar.xz pdx-clang16
 
 
