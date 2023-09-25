@@ -7,6 +7,7 @@
 
 
 使用方法，手机lxc/chroot/proot环境均可
+
 1.克隆此项目，注意此脚本只适合较新的clang版本比如clang16
 
 git clone https://github.com/tomxi1997/build-aosp-clang-for-arm64.git tc-build
