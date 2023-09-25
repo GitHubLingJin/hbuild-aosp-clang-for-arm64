@@ -24,6 +24,8 @@ wget https://android.googlesource.com/toolchain/llvm-project/+archive/984b800a03
 tar -xf *.gz
 
 cd ...
+
+
 chmod +x build.sh
 
 ./build.sh
