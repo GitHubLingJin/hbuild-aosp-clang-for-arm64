@@ -7,5 +7,4 @@
 -i /root/Toolchain/pdx-clang16
 
 
-./build-binutils.py --targets arm-linux-gnueabi aarch64-linux-gnu \
--i /root/Toolchain/pdx-clang16
+#./build-binutils.py --targets arm-linux-gnueabi aarch64-linux-gnu -i /root/Toolchain/pdx-clang16
