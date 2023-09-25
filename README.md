@@ -25,7 +25,6 @@ tar -xf *.gz
 
 cd ...
 
-
 chmod +x build.sh
 
 ./build.sh
