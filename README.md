@@ -18,12 +18,26 @@ cd ./tc-build/src/llvm-project
 wget https://android.googlesource.com/toolchain/llvm-project/+archive/984b800a036fc61ccb129a8da7592af9cadc94dd.tar.gz
 
 tar -xf *.gz
+
 cd ..
+
 ./build.sh
 
 3.最终会安装在 /root/Toolchain/Pdx-clang16,打包测试
 cd  /root/Toolchain
 XZ_OPT="-9" tar --warning=no-file-changed -cJf pdx-clang16.tar.xz pdx-clang16
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
