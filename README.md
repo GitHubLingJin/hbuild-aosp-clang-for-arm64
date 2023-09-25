@@ -1,5 +1,34 @@
 # Toolchain build scripts
 
+主要是使用此脚本更标准化的编译经打好（入）补丁的aosp clang的源码，为什么有这个东西呢？
+注意只想在arm64设备上编译安卓内核比如在lxc/chroot/proot环境中或arm架构的电脑比Mac m1，没有与之匹配的编译器,因为全部都是x66平台所用。众所周知标准的linux内核一般都是用gcc,clang来编译，对于编译标准的linux内核用ubuntu自带的gcc,clang是没多大问题，但安卓内核就不一样了，安卓内核是经过多重修改（Google,高通，手机厂商）这样就导致不在符合标准，用一般的编译器编译就会出现各种问题，编译报错不敢，警告，内核刷入不开机，反正就是各种问题，为解决这些问题于是Google就搞了aosp clang 。这个就是从llvm拉来源码然后搞出初始编译器，然后呢编译安卓内核，然后测试内核及编译器，然后呢发现错误对编译器补丁，周而复始。比如clang 487747就多达111个补丁。
+
+一句来说就是在 arm64设备（手机，树莓派，Mac m1 ）上的｛linux/lxc/chroot/proot/等环境中｝借用此脚本标准化编译经补丁后的aosp clang源码，从而产生在arm64设备上的AOSP-Clang {事实是接近于真正的AOSP-Clang, 想完全达到x64上的AOSP clang 效果是不可能的除非Google 支持。
+
+
+使用方法
+1.克隆此项目
+git clone https://github.com/tomxi1997/build-aosp-clang-for-arm64.git tc-build
+mkdir -p ./tc-build/src/llvm-project
+cd ./tc-build/src/llvm-project
+
+2.下载经补丁后的aosp clang源码可从这里找https://android.googlesource.com/toolchain/llvm-project/+log/c4c5e79dd4b4c78eee7cffd9b0d7394b5bedcf12/clang-tools-extra
+就以补丁181处为例。
+
+wget https://android.googlesource.com/toolchain/llvm-project/+archive/984b800a036fc61ccb129a8da7592af9cadc94dd.tar.gz
+
+tar -xf *.gz
+cd ..
+./build.sh
+
+3.最终会安装在 /root/Toolchain/Pdx-clang16,打包测试
+cd  /root/Toolchain
+XZ_OPT="-9" tar --warning=no-file-changed -cJf pdx-clang16.tar.xz pdx-clang16
+
+
+
+
+
 There are times where a tip of tree LLVM build will have some issue fixed and it isn't available to you, maybe because it isn't in a release or it isn't available through your distribution's package management system. At that point, to get that fix, LLVM needs to be compiled, which sounds scary but is [rather simple](https://llvm.org/docs/GettingStarted.html). The `build-llvm.py` script takes it a step farther by trying to optimize both LLVM's build time by:
 
 * Trimming down a lot of things that kernel developers don't care about:
