@@ -6,10 +6,13 @@
 一句来说就是在 arm64设备（手机，树莓派，Mac m1 ）上的｛linux/lxc/chroot/proot/等环境中｝借用此脚本标准化编译经补丁后的aosp clang源码，从而产生在arm64设备上的AOSP-Clang {事实是接近于真正的AOSP-Clang, 想完全达到x64上的AOSP clang 效果是不可能的除非Google 支持。
 
 
-使用方法
+使用方法，手机lxc/chroot/proot环境均可
 1.克隆此项目，注意此脚本只适合较新的clang版本比如clang16
+
 git clone https://github.com/tomxi1997/build-aosp-clang-for-arm64.git tc-build
+
 mkdir -p ./tc-build/src/llvm-project
+
 cd ./tc-build/src/llvm-project
 
 2.下载经补丁后的aosp clang源码可从这里找https://android.googlesource.com/toolchain/llvm-project/+log/c4c5e79dd4b4c78eee7cffd9b0d7394b5bedcf12/clang-tools-extra
@@ -41,6 +44,8 @@ XZ_OPT="-9" tar --warning=no-file-changed -cJf pdx-clang16.tar.xz pdx-clang16
 
 
 
+～－－－－－－－－～
+分割线
 
 
 
