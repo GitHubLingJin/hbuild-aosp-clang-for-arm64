@@ -81,7 +81,8 @@ else:
     folder_name = 'binutils-' + '.'.join(str(x) for x in LATEST_BINUTILS_RELEASE if x)
 
     bsm.location = Path(tc_build_folder, 'src', folder_name)
-    bsm.tarball.base_download_url = 'https://sourceware.org/pub/binutils/releases'
+    #bsm.tarball.base_download_url = 'https://sourceware.org/pub/binutils/releases'
+    bsm.tarball.base_download_url = 'https://mirrors.aliyun.com/gnu/binutils'
     bsm.tarball.local_location = bsm.location.with_name(f"{folder_name}.tar.xz")
     bsm.tarball_remote_checksum_name = 'sha512.sum'
     bsm.prepare()
