@@ -518,7 +518,8 @@ class LLVMSourceManager:
             git_clone.append('--depth=1')
             if ref != 'main':
                 git_clone.append('--no-single-branch')
-        git_clone += ['https://github.com/llvm/llvm-project', self.repo]
+       # git_clone += ['https://github.com/llvm/llvm-project', self.repo]
+        git_clone += ['https://mirrors.tuna.tsinghua.edu.cn/git/llvm-project', self.repo]
 
         subprocess.run(git_clone, check=True)
 
